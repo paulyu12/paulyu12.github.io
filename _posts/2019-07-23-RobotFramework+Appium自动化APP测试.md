@@ -10,7 +10,7 @@ tags:
 ---
 接到测试内部开发的APP的任务，需要在Android和iOS两个平台进行测试，并且对于iOS的不同版本、Android中不同手机厂商的定制版本进行充分的测试。为了自动化测试过程，采用RobotFramwork+Appium对APP进行测试。由于目前设备受限（没有Macbook），所以本文以介绍Android自动化测试为主。
 
-#### 一. 原理
+### 一. 原理
 
 利用Appium软件在本地搭建Appium服务器（也可以搭建在远程主机上）。测试脚本由Robot Framework（RF)生成。RF通过socket将命令发送给Appium服务器（一般是4723端口），也从Appium服务器得到测试结果。
 
@@ -18,15 +18,15 @@ Appium服务器相当于代理，会在移动设备上安装一个APP——Appiu
 
 在iOS测试中，Appium和移动设备间的通信方式使用Instruments。
 
-#### 二. Robot Framework （RF)
+### 二. Robot Framework （RF)
 
 Robot Framework 是一款基于 Python 的功能自动化测试框架。它具备良好的可扩展性，支持关键字驱动，可以同时测试多种类型的客户端或者接口，可以进行分布式测试执行。主要用于轮次很多的验收测试和验收测试驱动开发（ATDD）。
 
-#### 三. Appium
+### 三. Appium
 
 Appium在本机或远程机器建立服务，测试人员在本地客户端编写测试脚本，将批量的测试任务发送给Appium服务，由Appium负责将命令发送给运行App的设备或模拟器，返回的结果向本地客户端报告。由此实现了自动化App测试。
 
-#### 四. 环境搭建和测试流程
+### 四. 环境搭建和测试流程
 
 1. 安装 RobotFramework
   
@@ -66,7 +66,7 @@ Appium在本机或远程机器建立服务，测试人员在本地客户端编�
       - 在侧边栏 Suite 名字上右键鼠标
       - New test usecase
 - 为 suite 导入 Library 和 Resource (如有)
-   
+  
       - 对于测试移动 App，需要导入 AppiumLibrary；对于 Web 测试，一般需要导入Selenium2Library
       
       - 可以自定义封装 AppiumLibary 中的步骤流，可以以 Resource 形式导入到 Suite 中，形成一个新的“函数”（这里的函数不是严格意义上的高级程序设计语言中的函数，函数名可以用中文命名）。在 编写 test usecase 时调用。
@@ -76,15 +76,12 @@ Appium在本机或远程机器建立服务，测试人员在本地客户端编�
       - 在 ride GUI 编辑区输入一条函数后，如果该函数名字变为蓝色，则说明该函数是一个被定义过的函数且成功调用。
    - 在编写测试用例脚本时，需要用到Library提供的各种“函数”，在 ride.py 的图形化界面中用快捷键 F5 能够快速调出一个关键字搜索程序，能够找到我们导入的 Library 都支持哪些函数。
    - 以函数“Open Application”为例，需要几个参数：其中需要 Android App 的包名（Package) 和主活动名 （main Activity）。可以通过 Android SDK 提供的工具 aapt.exe（在 Android SDK 的安装目录下的 bin 子目录）: 将 aapt 程序所在目录加入到系统环境变量中，然后打开 cmd，运行命令
-   
-   ​      `# aapt dump badging <安卓apk包名所在路径/xxx.apk>`
-   
-   ​       其中 package: name 就是包名，Launchable-activity 就是主活动（Main activity/）名。
-   
-7. uiautomatorviewer.bat
+      `# aapt dump badging <安卓apk包名所在路径/xxx.apk>`
+   其中 package: name 就是包名，Launchable-activity 就是主活动（Main activity/）名。
   
-  - 这个批处理程序是一个能够抓取当前设备显示的 Android App 页面的控件的工具。
-  - 左上角有两个类似手机的按钮，按其中一个如果抓取不到则按另一个抓取。
+7. uiautomatorviewer.bat
+   - 这个批处理程序是一个能够抓取当前设备显示的 Android App 页面的控件的工具。
+   - 左上角有两个类似手机的按钮，按其中一个如果抓取不到则按另一个抓取。
   
 8. xpath
 
