@@ -51,6 +51,7 @@ Appium在本机或远程机器建立服务，测试人员在本地客户端编�
 
 6. 使用 RobotFramework 脚本 ride.py 书写测试用例
   
+   - RIDE 是 RobotFramework IDE 的缩写
    - ride.py 脚本位于 Python 的安装目录下的子目录：<Python 根目录>/Scripts/ride.py
    - 新建 project
    
@@ -67,20 +68,20 @@ Appium在本机或远程机器建立服务，测试人员在本地客户端编�
       - New test usecase
 - 为 suite 导入 Library 和 Resource (如有)
   
-      - 对于测试移动 App，需要导入 AppiumLibrary；对于 Web 测试，一般需要导入Selenium2Library
-      
-      - 可以自定义封装 AppiumLibary 中的步骤流，可以以 Resource 形式导入到 Suite 中，形成一个新的“函数”（这里的函数不是严格意义上的高级程序设计语言中的函数，函数名可以用中文命名）。在 编写 test usecase 时调用。
-      
-      - 引用 Library 或 Resource 后，如果该包名显示为红色，则说明发生引用错误。可以通过查看日志，跟踪 python 脚本的报错来解决。
-      
-      - 在 ride GUI 编辑区输入一条函数后，如果该函数名字变为蓝色，则说明该函数是一个被定义过的函数且成功调用。
+   - 对于测试移动 App，需要导入 AppiumLibrary；对于 Web 测试，一般需要导入Selenium2Library
+     
+   - 可以自定义封装 AppiumLibary 中的步骤流，可以以 Resource 形式导入到 Suite 中，形成一个新的“函数”（这里的函数不是严格意义上的高级程序设计语言中的函数，函数名可以用中文命名）。在 编写 test usecase 时调用。
+     
+   - 引用 Library 或 Resource 后，如果该包名显示为红色，则说明发生引用错误。可以通过查看日志，跟踪 python 脚本的报错来解决。
+     
+   - 在 ride GUI 编辑区输入一条函数后，如果该函数名字变为蓝色，则说明该函数是一个被定义过的函数且成功调用。
    - 在编写测试用例脚本时，需要用到Library提供的各种“函数”，在 ride.py 的图形化界面中用快捷键 F5 能够快速调出一个关键字搜索程序，能够找到我们导入的 Library 都支持哪些函数。
    - 以函数“Open Application”为例，需要几个参数：其中需要 Android App 的包名（Package) 和主活动名 （main Activity）。可以通过 Android SDK 提供的工具 aapt.exe（在 Android SDK 的安装目录下的 bin 子目录）: 将 aapt 程序所在目录加入到系统环境变量中，然后打开 cmd，运行命令
-   
+    
       `# aapt dump badging <安卓apk包名所在路径/xxx.apk>`
-   
+    
        其中 package: name 就是包名，Launchable-activity 就是主活动（Main activity/）名。
-  
+
 7. uiautomatorviewer.bat
   
    - 这个批处理程序是一个能够抓取当前设备显示的 Android App 页面的控件的工具。
