@@ -10,7 +10,7 @@ tags:
 ---
 [[C++ Code Reference]](https://github.com/Paul-HIT/HeadFirst-DesignPatterns)
 
-1. 设计原则
+## 设计原则 ##
 
 - 源自策略模式
 
