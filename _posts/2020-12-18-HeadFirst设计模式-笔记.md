@@ -11,6 +11,7 @@ tags:
 [[C++ Code Reference]](https://github.com/Paul-HIT/HeadFirst-DesignPatterns)
 
 1. 设计原则
+
 - 源自策略模式
 
     a. 多用组合，少用继承。
@@ -52,54 +53,57 @@ tags:
 - private 的构造函数
 - 拥有一个静态成员变量：uniqueInstance
 - 通过一个 public 静态方法 getInstance 来作为全局访问的入口。
+
 ```C++
-class Singleton {
-public:
-    static Singleton getInstance() {
-        if (m_uniqueInstance == nullptr) {
-            m_uniqueInstance = new Singleton();
+    class Singleton {
+    public:
+        static Singleton getInstance() {
+            if (m_uniqueInstance == nullptr) {
+                m_uniqueInstance = new Singleton();
+            }
+            return m_uniqueInstance;
         }
-        return m_uniqueInstance;
-    }
 
-    static void deleteInstance() {
-        if (m_uniqueInstance != nullptr) {
-            delete m_uniqueInstance;
-            m_uniqueInstance = nullptr;
+        static void deleteInstance() {
+            if (m_uniqueInstance != nullptr) {
+                delete m_uniqueInstance;
+                m_uniqueInstance = nullptr;
+            }
         }
-    }
 
-private:
-    Singleton() {
+    private:
+        Singleton() {
 
-    }
-    ~Singleton() {
+        }
+        ~Singleton() {
 
-    }
+        }
 
-    static Singleton* m_uniqueInstance;
-};
+        static Singleton* m_uniqueInstance;
+    };
 ```
 
 7. 能够应付多线程的单例模式（线程安全）
-    a. 如果 getInstance() 的性能对应用程序不是很关键，就将 getInstance 改成同步的方法；
-    b. 使用“急切”的方式在加载这个类的时候就创建好对象，而不是在需要的时候“延迟”实例化；(在 C++ 中使用内部静态变量来实现)
+
+a. 如果 getInstance() 的性能对应用程序不是很关键，就将 getInstance 改成同步的方法；
+
+b. 使用“急切”的方式在加载这个类的时候就创建好对象，而不是在需要的时候“延迟”实例化；(在 C++ 中使用内部静态变量来实现)
 
 ```C++
-class Singleton {
-public:
-    Singleton& getInstance() {
-        static Singleton m_uniqueInstance;
-        return m_uniqueInstance;
-    }
-private:
-    Singleton() {
+    class Singleton {
+    public:
+        Singleton& getInstance() {
+            static Singleton m_uniqueInstance;
+            return m_uniqueInstance;
+        }
+    private:
+        Singleton() {
 
-    }
-    ～Singleton() {
+        }
+        ～Singleton() {
 
-    }
-};
+        }
+    };
 ```
 
-    c. 双重检查（Double Check）：使用同步区块，减少使用同步，以提升性能。
+c. 双重检查（Double Check）：使用同步区块，减少使用同步，以提升性能。
