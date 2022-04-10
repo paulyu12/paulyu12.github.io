@@ -7,7 +7,6 @@ author:     "Paul"
 header-img: "img/post-bg-2020-12.jpg"
 tags:
     - C++
-    - 技术
 ---
 C++ Primer 练习题 6.55
 
