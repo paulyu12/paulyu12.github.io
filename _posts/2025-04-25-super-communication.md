@@ -2,7 +2,7 @@
 layout:     post
 title:      "Super Communicators"
 # subtitle:   ""
-date:       2024-09-08
+date:       2025-04-25
 author:     "Paul"
 header-img: "img/post-bg-2020-12.jpg"
 tags:
